@@ -4,46 +4,37 @@ import Combine
 @main
 struct CuvvaTechTestApp: App {
     
-    // TODO: Replace mocks with custom implementations
-    private static let useLive: Bool = false
+    private static let useLive: Bool = true
     
     private var appModel: AppViewModel = {
         
         guard useLive else {
             return .init(
                 apiClient: .mockEmpty,
-                policyModel: MockPolicyModel()
+                policyModel: MockPolicyModel(),
+                policyStorage: MockPolicyStorage()
             )
         }
+        let policyStorage = PolicyStorage()
         
         return .init(
             apiClient: .live,
-            policyModel: LivePolicyEventProcessor()
+            policyModel: LivePolicyEventProcessor(
+                policyStorage: policyStorage
+            ),
+            policyStorage: policyStorage
         )
-        
     }()
     
     var body: some Scene {
         WindowGroup {
             HomeView(model: appModel)
-        
-            
-            /**
-                TODO: Supply own PolicyTermFormatter implementation
-            */
-            
-//               .environment(\.policyTermFormatter, LivePolicyTermFormatter())
-            
-            
+                .environment(\.policyTermFormatter, LivePolicyTermFormatter())
             /**
                 The app uses a static time by default
                 TODO: Uncomment the line below to use the device time
             */
-            
-//               .environment(\.now, LiveTime())
-            
-            
-            
+               .environment(\.now, LiveTime())
         }
     }
 }
@@ -69,16 +60,19 @@ class AppViewModel: ObservableObject {
     // MARK: Dependencies
     private let apiClient: APIClient
     private let policyModel: PolicyEventProcessor
+    private let policyStorage: PolicyStorageProtocol
     
     // MARK: Public functions
     
-    init(apiClient: APIClient, policyModel: PolicyEventProcessor) {
+    init(apiClient: APIClient,
+         policyModel: PolicyEventProcessor,
+         policyStorage: PolicyStorageProtocol) {
         self.apiClient = apiClient
         self.policyModel = policyModel
+        self.policyStorage = policyStorage
     }
     
     func reload(date: @escaping () -> Date) {
-        
         isLoading = true
         
         cancellationToken = apiClient.events()
@@ -94,7 +88,8 @@ class AppViewModel: ObservableObject {
                     }
                 },
             receiveValue: { response in
-                self.policyModel.store(json: response)
+                // Chebotov. Now we can add a test to check the new response is stored as well
+                self.policyStorage.store(json: response)
                 self.refreshData(for: date())
             }
         )

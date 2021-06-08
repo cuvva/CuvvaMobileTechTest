@@ -324,7 +324,13 @@ struct LazyView<Content: View>: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(model: .init(apiClient: .mockEmpty, policyModel: MockPolicyModel()))
+        HomeView(
+            model: .init(
+                apiClient: .mockEmpty,
+                policyModel: MockPolicyModel(),
+                policyStorage: MockPolicyStorage()
+            )
+        )
     }
 }
 

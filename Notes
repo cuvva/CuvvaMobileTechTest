@@ -1,0 +1,19 @@
+I got a few thoughts while working on a test task. I left some of them in the code marked with the 'Chebotov' keyword, so you can easily find it. The rest are here:
+
+
+1. There is a reference cycle between Vehicle and Policy models
+2. LivePolicyEventProcessor breaks the SRP principle, right? It does 2 things:
+   1. transfers original JSON into policies
+   2. selects active/historic policies by the date
+3. LivePolicyEventProcessor is, therefore, harder to cover with tests than necessary. To improve this, I split the logic between 2 entities: the original Processor and the new Storage. The processor gets the Storage as a dependency. This allows covering individual pieces of logic separately.
+4. I would try to avoid double data conversion. JSON -> JsonObjects -> App objects.
+5. The API itself can be improved. It would be easier to receive 2 separate lists from the server: vehicles and events. And to merge events with vehicles on the client side. At the moment vehicles can be sent multiple times with the different events. That's not very effective. Plus, the processing of the events is more complicated than it's needed
+6. I'm not a Combine expert. We didn't discuss the test task to be based on Combine beforehand. As a result, some parts of it may not be as functional-oriented as it is technically possible
+7. Policy -> Vehicle -> Policy dependency is not the easiest one to handle. It would be simpler to keep a list of vehicles. Each vehicle then can have a list of active policies and a list of non-active policies. This can even be done with the existing UI but would allow supporting multiple active policies.
+8. Policy objects seem to require to be updatable since extension event changes the duration of the whole policy. 'let' properties don't help there
+
+
+General task feedback:
+1. "feel free to do a blocking synchronous hack" part in the README file doesn't make much sense since the network layer is not a part of the test task, right?
+2. durationRemainingPercent may not be the best name since it is the current progress, not the remaining percentage
+3. I'm afraid, the extension example in Readme is not correct. The dates in the example are not the same. This makes the original policy a 25 hours policy, and the extension overlaps with the original policy term

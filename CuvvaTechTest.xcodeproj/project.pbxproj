@@ -29,6 +29,11 @@
 		2E6AE0CD2649CAEB00EF31D6 /* CuvvaTechTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6AE0CC2649CAEB00EF31D6 /* CuvvaTechTestTests.swift */; };
 		2E6AE0D82649CAEB00EF31D6 /* CuvvaTechTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6AE0D72649CAEB00EF31D6 /* CuvvaTechTestUITests.swift */; };
 		2E6AE0E6264FAE3200EF31D6 /* EnviromentFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6AE0E5264FAE3200EF31D6 /* EnviromentFormatters.swift */; };
+		9FE8F0BC266D1B8B00D67CB7 /* LivePolicyEventProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8F0BB266D1B8B00D67CB7 /* LivePolicyEventProcessorTests.swift */; };
+		9FE8F0C0266D1EBC00D67CB7 /* PolicyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8F0BF266D1EBC00D67CB7 /* PolicyStorage.swift */; };
+		9FE8F0C2266D218900D67CB7 /* MockTestsPolicyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8F0C1266D218900D67CB7 /* MockTestsPolicyStorage.swift */; };
+		9FE8F0C7266D3BBC00D67CB7 /* MockPolicyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8F0C6266D3BBC00D67CB7 /* MockPolicyStorage.swift */; };
+		9FE8F0C9266D3C9C00D67CB7 /* PolicyStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8F0C8266D3C9C00D67CB7 /* PolicyStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +83,12 @@
 		2E6AE0D92649CAEB00EF31D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E6AE0E5264FAE3200EF31D6 /* EnviromentFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnviromentFormatters.swift; sourceTree = "<group>"; };
 		5B27D9E4266A38DB003127C5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9FE8F0BB266D1B8B00D67CB7 /* LivePolicyEventProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePolicyEventProcessorTests.swift; sourceTree = "<group>"; };
+		9FE8F0BF266D1EBC00D67CB7 /* PolicyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyStorage.swift; sourceTree = "<group>"; };
+		9FE8F0C1266D218900D67CB7 /* MockTestsPolicyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTestsPolicyStorage.swift; sourceTree = "<group>"; };
+		9FE8F0C6266D3BBC00D67CB7 /* MockPolicyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPolicyStorage.swift; sourceTree = "<group>"; };
+		9FE8F0C8266D3C9C00D67CB7 /* PolicyStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyStorageTests.swift; sourceTree = "<group>"; };
+		9FE8F0CA266D57C800D67CB7 /* Notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +177,8 @@
 		2E33524926540E620004CD5A /* Processor */ = {
 			isa = PBXGroup;
 			children = (
+				9FE8F0C4266D288F00D67CB7 /* PolicyStorage */,
+				9FE8F0B8266D1B4A00D67CB7 /* Tests */,
 				2E33524A26540E700004CD5A /* PolicyEventProcessor.swift */,
 				2E33524E26540EBC0004CD5A /* LivePolicyEventProcessor.swift */,
 				2E33525026540F070004CD5A /* MockPolicyEventProcessor.swift */,
@@ -177,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				5B27D9E4266A38DB003127C5 /* README.md */,
+				9FE8F0CA266D57C800D67CB7 /* Notes */,
 				2E6AE0B92649CAE900EF31D6 /* CuvvaTechTest */,
 				2E6AE0CB2649CAEB00EF31D6 /* CuvvaTechTestTests */,
 				2E6AE0D62649CAEB00EF31D6 /* CuvvaTechTestUITests */,
@@ -234,6 +248,33 @@
 				2E6AE0D92649CAEB00EF31D6 /* Info.plist */,
 			);
 			path = CuvvaTechTestUITests;
+			sourceTree = "<group>";
+		};
+		9FE8F0B8266D1B4A00D67CB7 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9FE8F0C8266D3C9C00D67CB7 /* PolicyStorageTests.swift */,
+				9FE8F0BB266D1B8B00D67CB7 /* LivePolicyEventProcessorTests.swift */,
+				9FE8F0C5266D2BDC00D67CB7 /* Mocks */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		9FE8F0C4266D288F00D67CB7 /* PolicyStorage */ = {
+			isa = PBXGroup;
+			children = (
+				9FE8F0BF266D1EBC00D67CB7 /* PolicyStorage.swift */,
+				9FE8F0C6266D3BBC00D67CB7 /* MockPolicyStorage.swift */,
+			);
+			path = PolicyStorage;
+			sourceTree = "<group>";
+		};
+		9FE8F0C5266D2BDC00D67CB7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				9FE8F0C1266D218900D67CB7 /* MockTestsPolicyStorage.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +347,7 @@
 					};
 					2E6AE0C72649CAEB00EF31D6 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 						TestTargetID = 2E6AE0B62649CAE900EF31D6;
 					};
 					2E6AE0D22649CAEB00EF31D6 = {
@@ -380,6 +422,8 @@
 				2E33524826540D830004CD5A /* MockPolicyTermFormatter.swift in Sources */,
 				2E33523D26540CFB0004CD5A /* LiveTime.swift in Sources */,
 				2E33522E2652EA540004CD5A /* JSONModel.swift in Sources */,
+				9FE8F0C0266D1EBC00D67CB7 /* PolicyStorage.swift in Sources */,
+				9FE8F0C7266D3BBC00D67CB7 /* MockPolicyStorage.swift in Sources */,
 				2E3352372652F5A80004CD5A /* Policy.swift in Sources */,
 				2E3352312652ECED0004CD5A /* APIClient.swift in Sources */,
 				2E6AE0BB2649CAE900EF31D6 /* App.swift in Sources */,
@@ -391,6 +435,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E6AE0CD2649CAEB00EF31D6 /* CuvvaTechTestTests.swift in Sources */,
+				9FE8F0C9266D3C9C00D67CB7 /* PolicyStorageTests.swift in Sources */,
+				9FE8F0C2266D218900D67CB7 /* MockTestsPolicyStorage.swift in Sources */,
+				9FE8F0BC266D1B8B00D67CB7 /* LivePolicyEventProcessorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +630,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DSLBUK7BY;
 				INFOPLIST_FILE = CuvvaTechTestTests/Info.plist;
@@ -594,6 +642,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.cuvva.CuvvaTechTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CuvvaTechTest.app/CuvvaTechTest";
@@ -605,6 +654,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DSLBUK7BY;
 				INFOPLIST_FILE = CuvvaTechTestTests/Info.plist;

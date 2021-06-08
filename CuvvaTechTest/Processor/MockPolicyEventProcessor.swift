@@ -2,10 +2,6 @@ import Foundation
 
 struct MockPolicyModel: PolicyEventProcessor {
     
-    func store(json: JSONResponse) {
-        // no-op
-    }
-    
     func retrieve(for: Date) -> PolicyData {
         
         let vehicles = [
